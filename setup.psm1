@@ -62,7 +62,7 @@ function New-MenuItem([String]$DisplayName, [ScriptBlock]$Script) {
 }
 
 $global:Menus = @{
-    Main = @(
+    Main  = @(
         $(New-MenuItem -DisplayName "Run all steps from start to finish" -Script { RunAll }),
         $(New-MenuItem -DisplayName "Run from selected step to end" -Script { RunFrom }),
         $(New-MenuItem -DisplayName "Run from and to selected steps" -Script { RunFromTo }),
@@ -196,16 +196,37 @@ function RunOnly() {
 ##########
 # tools
 ##########
+Function PromptReinstall() {
+    $choices = New-Object Collections.ObjectModel.Collection[Management.Automation.Host.ChoiceDescription]
+    $choices.Add((New-Object Management.Automation.Host.ChoiceDescription -ArgumentList '&Yes'))
+    $choices.Add((New-Object Management.Automation.Host.ChoiceDescription -ArgumentList '&No'))
 
-Function ToolInstallWinget(){
+    $decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
+    if ($decision -eq 0) {
+        return $true
+    }
+    else {
+        return $false
+    }
+}
+
+Function ToolInstallWinget() {
     $package = Read-Host -Prompt "Input the package name" 
     powershell "winget install $package -e"
     Pause
     ShowMenu($global:Menus.Tools)
 }
-Function ToolInstallChoco(){
+Function ToolInstallChoco() {
     $package = Read-Host -Prompt "Input the package name" 
-    choco install $package -y
+    $installed = choco list
+    $isInstalled = $installed -Match $package
+    if ($isInstalled) {
+        if (PromptReinstall) {
+            choco install $package -y -f
+        }
+    }else{
+        choco install $package -y
+    }
     Pause
     ShowMenu($global:Menus.Tools)
 }
