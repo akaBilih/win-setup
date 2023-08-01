@@ -2,6 +2,11 @@
 
 Windows 10 setup scripts for fresh installs. By executing the script, you can complete your scheduled system configuration and the installation of common software **semi-automatically**.
 
+## Run with
+```
+irm https://utils.bielgonzalez.es/win-setup | iex
+```
+
 ## What will the scripts do
 
 > The following is my personal configuration, you can modify the script to suit your usage habits.
@@ -26,8 +31,6 @@ Windows 10 setup scripts for fresh installs. By executing the script, you can co
   - GetHelp
   - ...
 - Install apps by Winget
-  - Visual Studio Code
-  - QQ, WeChat
   - Git, NodeJS, Miniconda
   - ...
 - Install apps by Chocolaty (that can't be installed from Winget)
@@ -46,16 +49,11 @@ Windows 10 setup scripts for fresh installs. By executing the script, you can co
   - Set git name and email
   - Enable git proxy
   - Enable npm taobao registry
-- Install npm global packages
-  - whistle
-- Clone my repos
-  - awesome-ahk
 - Restart computer
 
 ## Prerequisites
 
 - A fresh install of Windows 10.
-- If in China: prepare proxy software to access the true internet.
 
 ## Usage
 

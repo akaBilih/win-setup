@@ -1,0 +1,147 @@
+{
+    "tweaks": {
+        "enable": [
+            "F8BootMenu",
+            "RemoteDesktop",
+            "NTFSLongPaths",
+            "DeveloperMode"
+        ],
+        "disable": [
+            "Telemetry",
+            "Cortana",
+            "AppSuggestions",
+            "ActivityHistory",
+            "Location",
+            "MapUpdates",
+            "Feedback",
+            "TailoredExperiences",
+            "AdvertisingID",
+            "ErrorReporting",
+            "DiagTrack",
+            "WAPPush",
+            "UWPBackgroundApps",
+            "RemoteAssistance",
+            "UpdateRestart",
+            "MaintenanceWakeUp",
+            "SharedExperiences",
+            "Autoplay",
+            "Autorun",
+            "AccessibilityKeys",
+            "SearchAppInStore",
+            "NewAppPrompt",
+            "ShortcutInName",
+            "EnhPointerPrecision",
+            "F1HelpKey",
+            "OneDrive",
+            "XboxFeatures",
+            "AdobeFlash",
+            "EdgeShortcutCreation",
+            "IEFirstRun",
+            "MediaSharing"
+        ],
+        "show": [
+            "TaskManagerDetails",
+            "KnownExtensions",
+            "HiddenFiles"
+        ],
+        "hide": [
+            "TaskbarSearch",
+            "TaskView",
+            "TaskbarPeopleIcon",
+            "SyncNotifications",
+            "RecentShortcuts",
+            "ThisPCFromDesktop",
+            "DesktopFromThisPC",
+            "DocumentsFromThisPC",
+            "DocumentsFromExplorer",
+            "DownloadsFromThisPC",
+            "DownloadsFromExplorer",
+            "MusicFromThisPC",
+            "MusicFromExplorer",
+            "PicturesFromThisPC",
+            "PicturesFromExplorer",
+            "VideosFromThisPC",
+            "VideosFromExplorer",
+            "3DObjectsFromThisPC",
+            "3DObjectsFromExplorer",
+            "IncludeInLibraryMenu"
+        ],
+        "set": [
+            "CurrentNetworkPrivate",
+            "AppsDarkMode",
+            "SystemDarkMode",
+            "ExplorerThisPC"
+        ],
+        "uninstall": [
+            "OneDrive",
+            "ThirdPartyBloat",
+            "FaxPrinter",
+            "XPSPrinter"
+        ]
+    },
+    "apps": {
+        "add": {
+            "winget": [],
+            "chocolatey": [
+                "adobereader",
+                "whatsapp",
+                "googlechrome",
+                "vlc",
+                "git",
+                "winrar",
+                "vscode",
+                "filezilla",
+                "microsoft-windows-terminal",
+                "thunderbird",
+                "spotify",
+                "putty",
+                "powertoys",
+                "pritunl-client",
+                "visualstudio2022community",
+                "mysql.workbench",
+                "mysql",
+                "discord",
+                "dotnet-7.0-desktopruntime",
+                "visualstudio2022-workload-visualstudioextension",
+                "visualstudio2022-workload-manageddesktop",
+                "visualstudio2022-workload-netweb"
+            ]
+        },
+        "remove": {
+            "msbloat": [
+                "Microsoft.Wallet",
+                "Microsoft.Messaging",
+                "Microsoft.YourPhone",
+                "Microsoft.People",
+                "Microsoft.GetHelp",
+                "Microsoft.Getstarted",
+                "Microsoft.SkypeApp",
+                "Microsoft.BingNews",
+                "Microsoft.BingMaps",
+                "Microsoft.BingSports",
+                "Microsoft.ZuneMusic",
+                "Microsoft.ZuneVideo",
+                "Microsoft.MicrosoftStickyNotes",
+                "Microsoft.Print3D",
+                "Microsoft.3DBuilder",
+                "Microsoft.OneConnect",
+                "Microsoft.WindowsMaps",
+                "Microsoft.Windows.Cortana",
+                "Microsoft.MixedReality.Portal",
+                "Microsoft.MicrosoftSolitaireCollection",
+                "Microsoft.WindowsFeedbackHub",
+                "Microsoft.MicrosoftOfficeHub",
+                "Microsoft.Office.OneNote",
+                "microsoft.windowscommunicationsapps",
+                "Microsoft.Advertising.Xaml"
+            ]
+        }
+    },
+    "git": {
+        "config": {
+            "user": "akaBilih",
+            "email": "bigopi2004@gmail.com"
+        },
+        "repos": []
+    }
+}

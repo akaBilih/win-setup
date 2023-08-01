@@ -3910,8 +3910,8 @@ Function InstallXPSPrinter {
 }
 
 # Remove Default Fax Printer
-Function RemoveFaxPrinter {
-	Write-Output "Removing Default Fax Printer..."
+Function UninstallFaxPrinter {
+	Write-Output "Uninstalling Default Fax Printer..."
 	Remove-Printer -Name "Fax" -ErrorAction SilentlyContinue
 }
 
