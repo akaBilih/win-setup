@@ -197,11 +197,12 @@ function RunOnly() {
 # tools
 ##########
 Function PromptReinstall() {
+    $question = "The package is already installed. Are you sure you want to reinstall?"
     $choices = New-Object Collections.ObjectModel.Collection[Management.Automation.Host.ChoiceDescription]
     $choices.Add((New-Object Management.Automation.Host.ChoiceDescription -ArgumentList '&Yes'))
     $choices.Add((New-Object Management.Automation.Host.ChoiceDescription -ArgumentList '&No'))
 
-    $decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
+    $decision = $Host.UI.PromptForChoice("", $question, $choices, 1)
     if ($decision -eq 0) {
         return $true
     }
