@@ -105,7 +105,7 @@ function ShowMenu($opts) {
     else {
         exit
     }
-    ShowMenu
+    ShowMenu($global:Menus.Main)
 }
 
 $global:Steps = @(  
@@ -198,12 +198,16 @@ function RunOnly() {
 ##########
 
 Function ToolInstallWinget(){
-    $package = Read-Host -Prompt "Input the package name: " 
+    $package = Read-Host -Prompt "Input the package name" 
     powershell "winget install $package -e"
+    Pause
+    ShowMenu($global:Menus.Tools)
 }
 Function ToolInstallChoco(){
-    $package = Read-Host -Prompt "Input the package name: " 
+    $package = Read-Host -Prompt "Input the package name" 
     choco install $package -y
+    Pause
+    ShowMenu($global:Menus.Tools)
 }
 
 ##########
