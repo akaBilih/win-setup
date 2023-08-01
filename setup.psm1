@@ -61,18 +61,28 @@ function New-MenuItem([String]$DisplayName, [ScriptBlock]$Script) {
     Return $MenuItem
 }
 
-$Opts = @(
-    $(New-MenuItem -DisplayName "Run all steps from start to finish" -Script { RunAll }),
-    $(New-MenuItem -DisplayName "Run from selected step to end" -Script { RunFrom }),
-    $(New-MenuItem -DisplayName "Run from and to selected steps" -Script { RunFromTo }),
-    $(New-MenuItem -DisplayName "Run the selected step" -Script { RunOnly }),
-    $(Get-MenuSeparator),
-    $(New-MenuItem -DisplayName "Display all steps in order" -Script { DisplaySteps }),
-    $(Get-MenuSeparator),
-    $(New-MenuItem -DisplayName "Quit" -Script { exit })
-)
+$global:Menus = @{
+    Main = @(
+        $(New-MenuItem -DisplayName "Run all steps from start to finish" -Script { RunAll }),
+        $(New-MenuItem -DisplayName "Run from selected step to end" -Script { RunFrom }),
+        $(New-MenuItem -DisplayName "Run from and to selected steps" -Script { RunFromTo }),
+        $(New-MenuItem -DisplayName "Run the selected step" -Script { RunOnly }),
+        $(Get-MenuSeparator),
+        $(New-MenuItem -DisplayName "Show other tools" -Script { ShowTools }),
+        $(Get-MenuSeparator),
+        $(New-MenuItem -DisplayName "Display all steps in order" -Script { DisplaySteps }),
+        $(Get-MenuSeparator),
+        $(New-MenuItem -DisplayName "Quit" -Script { exit })
+    );
 
-function ShowMenu() {
+    Tools = @(
+        $(New-MenuItem -DisplayName "Install Winget package" -Script { ToolInstallWinget }),
+        $(New-MenuItem -DisplayName "Install Chocolatey package" -Script { ToolInstallChoco }),
+        $(Get-MenuSeparator),
+        $(New-MenuItem -DisplayName "Return" -Script { ShowMenu($global:Menus.Main) })
+    )
+}
+function ShowMenu($opts) {
     
     Write-Host
     Write-Host
@@ -88,10 +98,11 @@ function ShowMenu() {
     Write-Host
     Write-Host
     
-    $Chosen = Show-Menu -MenuItems $Opts
-    if ($Chosen){
+    $Chosen = Show-Menu -MenuItems $opts
+    if ($Chosen) {
         & $Chosen.Script
-    }else{
+    }
+    else {
         exit
     }
     ShowMenu
@@ -181,6 +192,20 @@ function RunOnly() {
     ExecuteSteps($steps)
 }
 
+
+##########
+# tools
+##########
+
+Function ToolInstallWinget(){
+    $package = Read-Host -Prompt "Input the package name: " 
+    powershell "winget install $package -e"
+}
+Function ToolInstallChoco(){
+    $package = Read-Host -Prompt "Input the package name: " 
+    choco install $package -y
+}
+
 ##########
 # utils
 ##########
@@ -265,7 +290,7 @@ Function setPowerSettings() {
 }
 
 Function executeTweaks() {
-    $tweaks = ($global:Config.tweaks | ForEach-Object { $_ | Get-Member -MemberType NoteProperty} | Select-Object -Unique -ExpandProperty Name) | ForEach-Object { $x = $_; return (($global:Config.tweaks | Select-Object -Unique -ExpandProperty "$_") | ForEach-Object { $x + $_ }) }
+    $tweaks = ($global:Config.tweaks | ForEach-Object { $_ | Get-Member -MemberType NoteProperty } | Select-Object -Unique -ExpandProperty Name) | ForEach-Object { $x = $_; return (($global:Config.tweaks | Select-Object -Unique -ExpandProperty "$_") | ForEach-Object { $x + $_ }) }
     foreach ($tweak in $tweaks) {
         $tweak | ForEach-Object { Invoke-Expression $_ }
     }

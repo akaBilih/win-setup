@@ -23,4 +23,4 @@ ResizeWindow
 # install and show menu
 Install-Module PSMenu
 Clear-Host
-ShowMenu
+ShowMenu($global:Menus.Main)
