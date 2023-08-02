@@ -141,7 +141,8 @@
         "filetypes": {},
         "protocols": {
             "http": "ChromeHTML",
-            "https": "ChromeHTML"
+            "https": "ChromeHTML",
+            "mailto": "Thunderbird.Url.mailto"
         }
     },
     "git": {
