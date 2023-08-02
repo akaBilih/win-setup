@@ -131,6 +131,7 @@ $global:Steps = @(
     "SetGitNameAndEmail",
     "CreateWorkspaceDir",
     "CloneGitRepos",
+    "SetProgramAssociations",
     # end
     "RemoveTmpCheck",
     "RestartTips"
@@ -226,7 +227,8 @@ Function ToolInstallChoco() {
         if (PromptReinstall) {
             choco install $package -y -f
         }
-    }else{
+    }
+    else {
         choco install $package -y
     }
     Pause
@@ -731,6 +733,25 @@ function ResizeWindow() {
     $x = ($sw / 2) - ($w / 2)
     $y = ($sh / 2) - ($h / 2)
     Set-Window -ProcessId $pid -X $x -Y $y -Width $w -Height $h
+}
+
+
+function SetProgramAssociations() {
+    SetAssociations $global:Config.associations.protocols
+    SetAssociations $global:Config.associations.filetypes -Prepend "."
+}
+
+function SetAssociations($associations, $prepend = ""){
+    ($associations | ForEach-Object {
+        $_ | Get-Member -MemberType NoteProperty 
+    } | Select-Object -Unique -ExpandProperty Name) | ForEach-Object {
+        $x = $_; 
+        return (($associations | Select-Object -Unique -ExpandProperty "$_") | ForEach-Object {
+                $target = ($prepend + $x)
+                .\tools\file_type_associations.exe $_ $target  
+                Write-Host "Set association for $target to $_"
+            }) 
+    }
 }
 
 Export-ModuleMember -Function *

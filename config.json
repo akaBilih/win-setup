@@ -137,6 +137,13 @@
             ]
         }
     },
+    "associations": {
+        "filetypes": {},
+        "protocols": {
+            "http": "ChromeHTML",
+            "https": "ChromeHTML"
+        }
+    },
     "git": {
         "config": {
             "user": "akaBilih",
