@@ -129,6 +129,7 @@ $global:Steps = @(
     "ManualInstallApp",
     # environment settings
     "SetGitNameAndEmail",
+    "SetGitSchannel",
     "CreateWorkspaceDir",
     "CloneGitRepos",
     "SetProgramAssociations",
