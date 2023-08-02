@@ -84,6 +84,8 @@ $global:Menus = @{
 }
 function ShowMenu($opts) {
     
+    Clear-Host
+
     Write-Host
     Write-Host
 
@@ -157,7 +159,6 @@ function ExecuteSteps($steps) {
     Write-Host "Steps executed correctly"
     Write-Host 
     Pause
-    Clear-Host
 }
 function SelectStep($startIndex = 0) {
     $steps = $global:Steps[$startIndex..($global:Steps.Count - 1)]
