@@ -4,7 +4,8 @@
             "F8BootMenu",
             "RemoteDesktop",
             "NTFSLongPaths",
-            "DeveloperMode"
+            "DeveloperMode",
+            "XboxFeatures"
         ],
         "disable": [
             "Telemetry",
@@ -33,7 +34,6 @@
             "EnhPointerPrecision",
             "F1HelpKey",
             "OneDrive",
-            "XboxFeatures",
             "AdobeFlash",
             "EdgeShortcutCreation",
             "IEFirstRun",
